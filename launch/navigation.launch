@@ -1,0 +1,41 @@
+<launch>
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find trash_collection_robot)/worlds/trash_world.world"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="recording" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+
+
+  <param name="robot_description" command="$(find xacro)/xacro $(find trash_collection_robot)/urdf/turtlebot3_trash.urdf"/>
+  
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+  
+
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" 
+        args="-urdf -model turtlebot3_trash -param robot_description -x 0 -y 0 -z 0"/>
+
+
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find trash_collection_robot)/maps/trash_map.yaml"/>
+
+
+  <node name="amcl" pkg="amcl" type="amcl">
+    <rosparam file="$(find trash_collection_robot)/config/amcl_params.yaml"/>
+  </node>
+
+ 
+  <node name="move_base" pkg="move_base" type="move_base" respawn="false" name="move_base">
+    <rosparam file="$(find trash_collection_robot)/config/costmap_common_params.yaml" command="load" ns="global_costmap"/>
+    <rosparam file="$(find trash_collection_robot)/config/costmap_common_params.yaml" command="load" ns="local_costmap"/>
+    <rosparam file="$(find trash_collection_robot)/config/local_costmap_params.yaml" command="load"/>
+    <rosparam file="$(find trash_collection_robot)/config/global_costmap_params.yaml" command="load"/>
+    <rosparam file="$(find trash_collection_robot)/config/base_local_planner_params.yaml" command="load"/>
+  </node>
+
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find trash_collection_robot)/rviz/navigation.rviz"/>
+</launch>
