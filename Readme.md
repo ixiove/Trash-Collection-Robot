@@ -9,6 +9,7 @@ An autonomous trash collection robot system built with ROS (Robot Operating Syst
 zhaoxinyi A206285
 1. all codes
 2. the text part of the report
+
 caoxi A206155
 1.Screenshot
 
