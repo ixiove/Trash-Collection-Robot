@@ -5,6 +5,12 @@ An autonomous trash collection robot system built with ROS (Robot Operating Syst
 ## Authors
    1.ZHAO XINYI A206285
    2.CAo XI A206155
+##  Contributing
+zhaoxinyi A206285
+1. all codes
+2. the text part of the report
+caoxi A206155
+1.Screenshot
 
 ## 📋 Project Overview
 
@@ -247,21 +253,9 @@ Enable verbose logging:
 roslaunch trash_collection_robot full_system.launch debug:=true
 ```
 
-##  Contributing
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
 
-##  License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-##  Authors
-
-- **Your Name** - *Initial work* - [yourusername](https://github.com/yourusername)
 
 ##  Acknowledgments
 
