@@ -12,6 +12,7 @@ zhaoxinyi A206285
 
 caoxi A206155
 1.Screenshot
+2.modification and testing of code
 
 ## 📋 Project Overview
 
